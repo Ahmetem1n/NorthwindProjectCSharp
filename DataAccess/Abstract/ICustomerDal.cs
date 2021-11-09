@@ -6,7 +6,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface ICustomerDal : IEntityRepository<Category>
+    public interface ICustomerDal : IEntityRepository<Customer>
     {
     }
 }
