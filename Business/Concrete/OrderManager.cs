@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -14,9 +15,9 @@ namespace Business.Concrete
         {
             _orderDal = orderDal;
         }
-        public List<Order> GetAll()
+        public IDataResult<List<Order>> GetAll()
         {
-            return _orderDal.GetAll();
+            return new SuccessDataResult<List<Order>>(_orderDal.GetAll());
         }
     }
 }

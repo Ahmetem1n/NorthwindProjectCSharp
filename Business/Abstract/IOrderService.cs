@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 namespace Business.Abstract
 {
     public interface IOrderService
-    {
-        List<Order> GetAll();
+    { 
+        IDataResult<List<Order>> GetAll();
     }
 }
