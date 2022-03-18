@@ -19,7 +19,7 @@ namespace ConsoleUI
         private static void CustomerTest()
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            foreach (var customer in customerManager.GetAll())
+            foreach (var customer in customerManager.GetAll().Data)
             {
                 Console.WriteLine(customer.ContactName);
             }
@@ -28,7 +28,7 @@ namespace ConsoleUI
         private static void OrderTest()
         {
             OrderManager orderManager = new OrderManager(new EfOrderDal());
-            foreach (var order in orderManager.GetAll())
+            foreach (var order in orderManager.GetAll().Data)
             {
                 Console.WriteLine(order.OrderId);
             }
@@ -37,12 +37,12 @@ namespace ConsoleUI
         private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var category in categoryManager.GetAll())
+            foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine(category.CategoryName);
             }
             Console.WriteLine();
-            Console.WriteLine(categoryManager.GetById(5).CategoryName);
+            Console.WriteLine(categoryManager.GetById(5).Data.CategoryName);
         }
 
         private static void ProductTest()
