@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -107,14 +109,5 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult deneme()
-        {
-            var result = _productDal.GetAll(p => p.Jp).Any();
-            if (result)
-            {
-                return new ErrorResult(Messages.ProductNameAlreadyExists);
-            }
-            return new SuccessResult();
-        }
     }
 }
